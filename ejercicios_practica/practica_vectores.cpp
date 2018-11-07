@@ -3,11 +3,18 @@
 using namespace std;
 
 int main(){
-	char vocales[6] = {'a','e','i','o','u','\0'};
-	int ancho = strlen(vocales);
-	for(int i=0; i<ancho; i++){
-		cout << vocales[i] << endl;
+	int cont;
+	char agregar;
+	char vocales[10];
+	cout << "cuantos datos va a ingresar?: ";
+	cin >> cont;
+	for(int a=0; a<cont; a++){
+		cout << "ingrese los datos: ";
+		cin >> agregar;
+		vocales[a] = agregar;
 	}
+	puts(vocales);
+	
 	cout << endl;
 	system("pause");
 	return 0;
