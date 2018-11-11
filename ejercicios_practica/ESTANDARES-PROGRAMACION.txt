@@ -1,0 +1,152 @@
+							ESTANDARES DE CODIFICACION C/C++
+
+-facilitan la etapa de desarrollo para el programador o programadores.
+-mejoran la legibilidad y mantenibilidad del codigo.
+-se evitan ciertos errores.
+
+							ESTRUCTURA DEL PROGRAMA
+
+-identacion dentro de cada estructura de control(if, for, while, etc) y para el contenido de funciones, registros, constructores, etc.
+resaltamos de forma visual la estructura logica del codigo.
+
+-cada if o else if debera tener su respectivo else, aunque no se ejecutre nada dentro de esto.
+esto ayudara a tomar siempre en cuenta situaciones imprevistas:
+if(condition)
+{
+	...;
+}
+else 
+{
+	/* unexpected state */
+}
+
+-se debe evitar la sentencia break dentro de todo ciclo, de requerirse romper el ciclo antes de su final, se debera usar otros medios como una escritura a la variable contadora o centinela.
+
+-siempre usar llaves en todas las estructuras de control, aun si tiene solo una instruccion en su interior, la unica ecvepcion aceptable a esta refla es cuando ponemos
+la instruccion a ejecutar en la misma linea que la instruccion de control:
+for(cond.;cond.;cond.) ...;
+
+-debemos usar de forma consistente el siguiente estilo de apertura y cierre de llaves el cual es el mas recomendado:
+if(condition)
+{
+	...;
+}
+
+-no se escribira codigo justo despues de una llave de apertura.
+
+-solo se insertara una instruccion por linea.
+
+-debera emplearse un espacio despues de las comas.
+
+-usaremos parentesis para especificar el orden de las prioridades en operaciones aritmeticas complejas. la unica excepcion aceptable es para los indices de los arreglos:
+miarray [i + 1]
+
+-separaremos los operadores binarios con espacios a ambos lados, ya que asi se resalta el operador y la lectura del programa.
+
+-debemos decantarnos desde el principio entre usar o no espacios antes de cada llamada a funcion y uso de estructuras de control:
+if (condition)
+{
+	for (cond.;cond.;cond.)
+}
+
+-evitar el uso de instrucciones que no se ejecuten nunca.
+
+-terminar un bucle con break si este es iterativo en vez de modificar la variable de iteracion.
+
+-toda instruccion switch debera disponer de un caso default siendo este el ultimo caso.
+
+-las expresiones a ejecutar cuando una sentencia sea verdadera o cuando un ciclo se mantenga, deberan ser del tipo compuestas, es decir, siempre
+dentro de llaves, incluso si no existe codigo a ejecutar.
+
+-no se deben ejecutar operaciones dentro de las expresiones a evaluar en las sentencias de control y los ciclos.
+
+-siempre usar parentesis cuando mas de una operacion de escriba en una sola linea de codigo. no confiar en la precedencia de operadores.
+
+							VARIABLES Y USOS
+
+-norma general: nunca usar variables globales.
+
+-las variables usadas como indice en iteraciones seran la i, j, k... tipicamente comenzando por la i.
+
+-nombres nemotecnicos.
+
+-recomentable usar el formato CamelCase(la primera letra de cada palabra en mayuscula y sin espacios entre estas) para nombres compuestos:
+SumaDigitos, NombreEstudiantes, PrecioTotal, etc.
+
+-valores constantes deberan declararse con el prototipo const y su nombre se escribira en mayusculas:
+const int PI = 3.1416;
+
+-toda variable deberia iniciarse con algun valor en su declaracion.
+
+-para el caso de variables ditpo puntero, siempre deberan inicializarse a NULL :
+int *ptr = NULL;
+
+							FUNCIONES
+
+-funciones que se usen en un mismo archivo(locales) sera obligatorio que se declares estativas y su nombre seguira las mismas reglas de nombramiento de variables.
+
+-cada funciones local debera ser declarada con un prototipo en la primer parte del fichero.
+
+-el nombre de la funcion debera ser nemotecnico.
+
+-para funciones externas se deberan declarar sus prototipos en el archivo header correspondiente a este codigo.
+
+-cada funcion debera estar limitada a una sola linea return(en caso de requerirse).
+
+-las funciones deberan realizar una sola y especifica accion sin importar si solo se compone de una sola linea de codigo.
+
+-evitar funciones que acepten mas de 5 parametros e incluya en mas de 30 lineas de codigo.
+
+							COMENTARIOS
+
+-todo fichero debera comenzar con un comentario descriptivo de: proposito, fecha de creacion y modificacion, motivo, autor o autores, etc. 
+se puede usar en el encabezado la licencia Beerware y el siguiente formato:
+/*
+*\file				archivo
+*\author			guillermo
+*\email				guillermo.email...
+*\ver 				0.0
+*\date				month day year
+*\target			UC
+*\brief				descripcion de la pieza de codigo
+*/
+
+-cada bloque de codigo comenzara con un bloque de comentarios que detalle los propositos, parametros de entrada que use, posibles valores de retorno, etc.
+la parte de entrada y salida estaran bien separados.
+
+-importante actualizar los comentarios de cada bloque de codigo que modifiquemos siendo una cuestion de prioridad.
+
+-incluiremos un espacio en blanco despues de la apertura de bloque de comentarios y antes del cierre:
+/*
+*comentario
+*/
+
+-en caso de regerirnos a una variable dentro del bloque de comentarios usaremos las comillas simples:
+/*
+*la variable 'suma' representa a 'xvariable'
+*/
+
+-seguiremos este formato en comentarios de bloque:
+/*
+*comentario de la primera linea
+*comentario de la segunda linea
+*/
+
+-cada bloque de conmentario refiere al codigo que le precede inmediatamente y por ello compartira su mismo nivel de indentacion.
+
+-debemos separar los parrafos dentro de un bloque de comentarios con una linea en blanco:
+/*
+*primer parrafo
+*
+*segundo parrafo
+*/
+
+-no escribiremos comentarios para obviedades. en caso de duda, es preferible optar por escribir mas comentarios y no menos.
+
+-evitar comentarios anidados, pues no cumplen con el estandar ANSI C11.
+
+-evitar los comentarios de tipo //, mejor usar /* comentario */.
+
+-los comentarios deben ser descriptivos y no hacer eco de lo que explicitamente se lee en el codigo.
+
+-no sobrecomentar codigo. un codigo bien escrito es un codigo implicitamente comentado.
