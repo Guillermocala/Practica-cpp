@@ -9,21 +9,38 @@ entradas: numero de nombres
 		  nombres
 */
 #include <iostream>
-#include <cstring>
 using namespace std;
+void LeerArray (string vector[20], int CDatos);
+void ImprimeVector (string vector[20], int CDatos);
+string temp;
 
 int main ()
 {
-	string nombres[20];
-	int numDatos;
+	char nombres2[100];
+	string Nombres[20];
+	int NumDatos;
 	cout << "Ingrese la cantidad de nombres que va a digitar(maximo 20): ";
-	cin >> numDatos;
-	for (int i=0; i < numDatos; i++)
-	{
-		cout << "Ingrese el nombre -" << i + 1 << " : "; 
-		cin >> nombres[i];
-	}
-		
+	cin >> NumDatos;
+	LeerArray(Nombres, NumDatos);
+	cout << "La lista de nombres es la siguiente: " << endl;
+	ImprimeVector(Nombres, NumDatos);
+	
+	
 	system ("pause");
 	return 0;
+}
+void LeerArray (string Vector[20], int CDatos)
+{
+	for (int i = 0; i < CDatos; i++)
+	{
+		cout << "Ingrese el nombre -" << i + 1 << " : "; 
+		cin >> Vector[i];
+	}
+}
+void ImprimeVector (string Vector[20], int CDatos)
+{
+	for (int j = 0; j < CDatos; j++)
+	{
+		cout << j + 1 <<"- " << Vector[j] << endl;
+	} 
 }
