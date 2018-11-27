@@ -1,3 +1,4 @@
+/*Guillermo Cala ; creacion : 30/sep/2018*/
 #include <iostream>
 using namespace std;
 int calculo (int a);
@@ -10,10 +11,11 @@ int main ()
 		calculo (num);
 		num++;
 	}
-system ("pause");
-return 0;
+	system ("pause");
+	return 0;
 }
-int calculo (int a){
+int calculo (int a)
+{
 	int cont = 0, i;
 	for (i = 1; i <= a ; i++)
 	{
