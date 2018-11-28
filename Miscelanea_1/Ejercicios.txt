@@ -164,7 +164,7 @@ int main (void)
 7. Que lea 10 números por teclado, los almacene en un array y los ordene de forma ascendente.
 
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h>	
 
 int main ()
 {
@@ -208,24 +208,24 @@ int main ()
 	for (i = 0; i < 5; i++)
 	{
 		printf ("Escriba un número");
-		scanf ("%d",&numeros1[i]);
+		scanf ("%d", &numeros1[i]);
 	}
 	for (i = 0; i < 5; i++)
 	{
 		printf ("Escriba un número");
-		scanf ("%d",&numeros2[i]);
+		scanf ("%d", &numeros2[i]);
 	}
 	for (i = 0; i < 5; i++)
 	{
-		numeros3[i]=numeros1[i];
+		numeros3[i] = numeros1[i];
 	}
 	for (i = 0; i < 5; i++)
 	{
-		numeros3[5+i] = numeros2[i];
+		numeros3[5 + i] = numeros2[i];
 	}
 	for (i = 0; i < 10; i++)
 	{
-		printf ("%d\n",numeros3[i]);
+		printf ("%d\n", numeros3[i]);
 	}
 	system ("PAUSE");     
 	return 0;
