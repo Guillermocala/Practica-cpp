@@ -9,20 +9,22 @@ int main ()
 {
 	const int Indicador = 100;
 	int NumPares[Indicador];
-	int SumPares = 0, cont = 0;
-	for (int i = 0; i < Indicador; i++)
+	int cont = 0, SumaPares = 0;
+	for (int i = 1; i < Indicador; i++)
 	{
 		if (i % 2 == 0)
 		{
-			NumPares[i] = i;
+			NumPares[cont] = i;
 			cont++;
 		}
 	}
 	for (int i = 0; i < cont; i++)
 	{
 		cout << NumPares[i] << endl;
+		SumaPares += NumPares[i];
 	}
-	cout << "Y la suma de dichos numeros es : " << SumPares << endl;
+	cout << "La suma de los numeros es : " << SumaPares << endl;
 	system ("pause");
 	return 0;
 }
+
