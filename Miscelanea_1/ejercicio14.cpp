@@ -9,7 +9,7 @@ int main ()
 {
 	const int Indicador = 20;
 	int Numeros[Indicador];
-	int NumBuscar, cont = 0;
+	int NumBuscar, CantidadNum = 0;
 	for (int i = 0; i < Indicador; i++)
 	{
 		cout << "Ingrese el numero #" << i + 1 << " : ";
@@ -21,10 +21,17 @@ int main ()
 	{
 		if (Numeros[i] == NumBuscar)
 		{
-			cont++;
+			CantidadNum++;
 		}
 	}
-	cout << "El numero " << NumBuscar << " esta " << cont << " veces" << endl;
+	if (CantidadNum > 0)
+	{
+		cout << "El numero " << NumBuscar << " existe, y esta " << CantidadNum << " veces" << endl;	
+	}
+	else
+	{
+		cout << "El numero " << NumBuscar << " No existe" << endl;
+	}
 	system ("pause");
 	return 0;
 }
