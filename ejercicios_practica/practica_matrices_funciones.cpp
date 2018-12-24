@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-	int CFilas, CColumnas;
+	int CFilas, CColumnas, Opcion;
 	const int NFilas = 50;
 	const int NColumnas = 50;
 	int Matriz[NFilas][NColumnas];
@@ -15,8 +15,118 @@ int main()
 	void ImprimeMatriz(int NumFilas, int NumColumnas, int Tabla[NFilas][NColumnas]);
 	void DiagonalPrincipal(int NumFilas, int NumColumnas, int Tabla[NFilas][NColumnas]);
 	void DiagonalSecundaria(int NumFilas, int NumColumnas, int Tabla[NFilas][NColumnas]);
-	void Transpuesta(int NumFilas, int NumColumnas, int Tabla[][50], void ImprimeMatriz(int NumFilas, int NumColumnas, int Tabla[][50]));
-	cout << "Procesador de matrices(valor limite 50)" << endl;
+	cout << "\tPROCESADOR DE MATRICES(dimension limite 50)\n1 - Proceso de matriz de dimensiones iguales\n2 - Proceso de matriz de dimensiones distintas\n3 - salir" << endl;
+	cout << "Ingrese una opcion(si ingresa una opcion invalida el programa terminara): ";
+	cin >> Opcion;
+	switch (Opcion)
+	{
+		case 1 :
+			cout << "1 - Operacion con 1 matriz\n2 - Operacion con 2 matrices" << endl;
+			cout << "ingrese una opcion: ";
+			cin >> Opcion;
+			switch (Opcion)
+			{
+				case 1 :
+					cout << "1 - Diagonal principal\n2 - Diagonal Secundaria\n3 - Matriz transpuesta\n4 - Multiplicacion de 1 escalar" << endl;
+					cout << "Ingrese una opcion: ";
+					cin >> Opcion;
+					switch (Opcion)
+					{
+						case 1 :
+							/*unexpected function*/
+							break;
+						case 2 :
+							/*unexpected function*/
+							break;
+						case 3 :
+							/*unexpected function*/
+							break;
+						case 4 :
+							/*unexpected function*/
+							break;
+						default :
+							cout << "Usted ha ingresado un valor invalido!" << endl;
+							break;
+					}
+					break;
+				case 2 :
+					cout << "1 - Suma\n2 - Resta\n3 - Multiplicacion" << endl;
+					cout << "Ingrese una opcion: ";
+					cin >> Opcion;
+					switch (Opcion)
+					{
+						case 1 :
+							/*unexpected function*/
+							break;
+						case 2 :
+							/*unexpected function*/
+							break;
+						case 3 :
+							/*unexpected function*/
+							break;
+						default :
+							cout << "Usted ha ingresado un valor invalido!" << endl;
+							break;
+					}
+					break;
+				default :
+					cout << "Usted ha ingresado un valor invalido!" << endl;
+					break;
+			}
+			break;
+		case 2 :
+			cout << "1 - Operacion con 1 matriz\n2 - Operacion con 2 matrices" << endl;
+			cout << "ingrese una opcion: ";
+			cin >> Opcion;
+			switch (Opcion)
+			{
+				case 1 :
+					cout << "1 - Matriz transpuesta\n2 - Multiplicacion de 1 escalar" << endl;
+					cout << "Ingrese una opcion: ";
+					cin >> Opcion;
+					switch (Opcion)
+					{
+						case 1 :
+							/*unexpected function*/
+							break;
+						case 2 :
+							/*unexpected function*/
+							break;
+						default :
+							cout << "Usted ha ingresado un valor invalido!" << endl;
+							break;
+					}
+					break;
+				case 2 :
+					cout << "1 - Suma\n2 - Resta\n3 - Multiplicacion" << endl;
+					cout << "Ingrese una opcion: ";
+					cin >> Opcion;
+					switch (Opcion)
+					{
+						case 1 :
+							/*unexpected function*/
+							break;
+						case 2 :
+							/*unexpected function*/
+							break;
+						case 3 :
+							/*unexpected function*/
+							break;
+						default :
+							cout << "Usted ha ingresado un valor invalido!" << endl;
+							break;
+					}
+					break;
+				default :
+					cout << "Usted ha ingresado un valor invalido!" << endl;
+					break;
+			}
+			break;	
+		default :
+			cout << "Usted ha ingresado un valor invalido!" << endl;
+			break;
+	}
+	/*
 	cout << "Ingrese el numero de filas: ";
 	cin >> CFilas;
 	cout << "Ingrese el numero de columnas: ";
@@ -28,8 +138,17 @@ int main()
 	cout << "\nLa diagonal secundaria es: ";
 	DiagonalSecundaria(CFilas, CColumnas, Matriz);
 	cout << "\nLa matriz transpuesta es: " << endl;
-	Transpuesta(CFilas, CColumnas, Matriz, ImprimeMatriz(CFilas, CColumnas, Matriz));
+	int Matriz2[NFilas][NColumnas];
+	for (int i = 0; i < CFilas; i++)
+	{
+		for (int j = 0; j < CColumnas; j++)
+		{
+			Matriz2[j][i] = Matriz[i][j];
+		}
+	}
+	ImprimeMatriz(CFilas, CColumnas, Matriz2);
 	cout << endl;
+	*/
 	system("pause");
 	return 0;
 }
@@ -82,16 +201,4 @@ void DiagonalSecundaria(int NumFilas, int NumColumnas, int Tabla[][50])
 			}
 		}
 	}
-}
-void Transpuesta(int NumFilas, int NumColumnas, int Tabla[][50], void ImprimeMatriz(int NumFilas, int NumColumnas, int Tabla[][50]))
-{
-	int Matriz2[50][50];
-	for (int i = 0; i < NumFilas; i++)
-	{
-		for (int j = 0; j < NumColumnas; j++)
-		{
-			Matriz2[j][i] = Tabla[i][j];
-		}
-	}
-	ImprimeMatriz(NumFilas, NumColumnas, Matriz2);
 }
