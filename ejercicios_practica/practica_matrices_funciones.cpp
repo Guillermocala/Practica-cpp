@@ -1,5 +1,5 @@
 /*
-*guillermo cala; dec/ 22 /18
+*guillermo cala; dec/ 22 /18; actualizacion: dec/ 24/ 18
 *repaso de matrices con diagonal principal y secundario en caso de que la misma sea cuadrada con menu
 */
 #include <iostream>
@@ -15,8 +15,9 @@ int main()
 	void ImprimeMatriz(int NumFilas, int NumColumnas, int Tabla[NFilas][NColumnas]);
 	void DiagonalPrincipal(int NumFilas, int NumColumnas, int Tabla[NFilas][NColumnas]);
 	void DiagonalSecundaria(int NumFilas, int NumColumnas, int Tabla[NFilas][NColumnas]);
-	cout << "\tPROCESADOR DE MATRICES(dimension limite 50)\n1 - Proceso de matriz de dimensiones iguales\n2 - Proceso de matriz de dimensiones distintas\n3 - salir" << endl;
-	cout << "Ingrese una opcion(si ingresa una opcion invalida el programa terminara): ";
+	void RecibirMatriz(int *NFilas, int *NColumnas, int Tabla[][50]);
+	cout << "\tPROCESADOR DE MATRICES(dimension limite 50)\n1 - Proceso de matriz de dimensiones iguales\n2 - Proceso de matriz de dimensiones distintas\n3 - salir\n-Si ingresa una opcion invalida el programa terminara" << endl;
+	cout << "Ingrese una opcion: ";
 	cin >> Opcion;
 	switch (Opcion)
 	{
@@ -33,7 +34,10 @@ int main()
 					switch (Opcion)
 					{
 						case 1 :
-							/*unexpected function*/
+							RecibirMatriz(&CFilas, &CColumnas, Matriz);
+							ImprimeMatriz(CFilas, CColumnas, Matriz);
+							DiagonalPrincipal(CFilas, CColumnas, Matriz);
+							cout << endl;
 							break;
 						case 2 :
 							/*unexpected function*/
@@ -127,11 +131,6 @@ int main()
 			break;
 	}
 	/*
-	cout << "Ingrese el numero de filas: ";
-	cin >> CFilas;
-	cout << "Ingrese el numero de columnas: ";
-	cin >> CColumnas;
-	LeerMatriz(CFilas, CColumnas, Matriz);
 	ImprimeMatriz(CFilas, CColumnas, Matriz);
 	cout << "La diagonal principal es: ";
 	DiagonalPrincipal(CFilas, CColumnas, Matriz);
@@ -152,11 +151,11 @@ int main()
 	system("pause");
 	return 0;
 }
-void LeerMatriz(int NumFilas, int NumColumnas, int Tabla[][50])
+void LeerMatriz(int *NumFilas, int *NumColumnas, int Tabla[][50])
 {
-	for (int i = 0; i < NumFilas; i++) /*PARA LEER MATRIZ*/
+	for (int i = 0; i < *NumFilas; i++) /*PARA LEER MATRIZ*/
 	{
-		for (int j = 0; j < NumColumnas; j++)
+		for (int j = 0; j < *NumColumnas; j++)
 		{
 			cout << "Ingrese el dato para la posicion [" << i + 1 << "][" << j + 1 << "]: ";
 			cin >> Tabla[i][j];
@@ -165,6 +164,7 @@ void LeerMatriz(int NumFilas, int NumColumnas, int Tabla[][50])
 }
 void ImprimeMatriz(int NumFilas, int NumColumnas, int Tabla[][50])
 {
+	cout << endl;
 	for (int i = 0; i < NumFilas; i++) /*PARA IMPRIMIR MATRIZ*/
 	{
 		cout << "[\t";
@@ -177,6 +177,7 @@ void ImprimeMatriz(int NumFilas, int NumColumnas, int Tabla[][50])
 }
 void DiagonalPrincipal(int NumFilas, int NumColumnas, int Tabla[][50])
 {
+	cout << "\nLa Diagonal Principal es: " << endl;
 	for (int i = 0; i < NumFilas; i++)
 	{
 		for (int j = 0; j < NumColumnas; j++)
@@ -201,4 +202,12 @@ void DiagonalSecundaria(int NumFilas, int NumColumnas, int Tabla[][50])
 			}
 		}
 	}
+}
+void RecibirMatriz(int *NFilas, int *NColumnas, int Tabla[][50])
+{
+	cout << "Ingrese el numero de filas: ";
+	cin >> *NFilas;
+	cout << "Ingrese el numero de columnas: ";
+	cin >> *NColumnas;
+	LeerMatriz(NFilas, NColumnas, Tabla);
 }
