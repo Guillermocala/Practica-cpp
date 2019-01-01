@@ -18,10 +18,11 @@ int main()
 	void DiagonalSecundaria(int NumFilas, int NumColumnas, int Tabla[NFilas][NColumnas]);
 	void MatrizTranspuesta(int NFilas, int NColumnas, int Tabla[][50], int Tabla2[][50]);
 	void MultiplicacionEscalar(int NFilas, int NColumnas, int Tabla[][50], int Tabla2[][50]);
+	void MultiplicaMatrices(int NFilas, int NColumnas, int Tabla[][50], int Tabla2[][50], int Tabla3[][50]);
 	void SumaMatrices(int NFilas, int NColumnas, int Tabla[][50], int Tabla2[][50], int Tabla3[][50]);
 	void RestaMatrices(int NFilas, int NColumnas, int Tabla[][50], int Tabla2[][50], int Tabla3[][50]);
 	void RecibirMatriz(int *NFilas, int *NColumnas, int Tabla[][50]);
-	cout << "\tPROCESADOR DE MATRICES(dimension limite 50)\n1 - Proceso de matriz de dimensiones iguales\n2 - Proceso de matriz de dimensiones distintas\n3 - salir\n-Si ingresa una opcion invalida el programa terminara" << endl;
+	cout << "\tPROCESADOR DE MATRICES(dimension limite 50)\n1 - Proceso de matriz de dimensiones iguales\n2 - Proceso de matriz de dimensiones distintas\n-Si ingresa una opcion invalida el programa terminara" << endl;
 	cout << "Ingrese una opcion: ";
 	cin >> Opcion;
 	switch (Opcion)
@@ -90,7 +91,12 @@ int main()
 							RestaMatrices(CFilas, CColumnas, Matriz, Matriz2, Matriz3);
 							break;
 						case 3 :
-							/*unexpected function*/
+							cout << "Ingrese la primera matriz";
+							RecibirMatriz(&CFilas, &CColumnas, Matriz);
+							cout << "Ingrese la segunda matriz";
+							RecibirMatriz(&CFilas2, &CColumnas2, Matriz2);
+							cout << "la multiplicacion de las matrices es: " << endl;
+							MultiplicaMatrices(CFilas, CColumnas, Matriz, Matriz2, Matriz3);
 							break;
 						default :
 							cout << "Usted ha ingresado un valor invalido!" << endl;
@@ -272,7 +278,13 @@ void MultiplicaMatrices(int NFilas, int NColumnas, int Tabla[][50], int Tabla2[]
 	{
 		for (int j = 0; j < NColumnas; j++)
 		{
-			Tabla3[i][j] = 		
+			int resultado = 0;
+			for (int k = 0; k < NFilas; k++) //bucle que multiplica
+			{
+				resultado += (Tabla[i][k] * Tabla2[k][j]);
+				Tabla3[i][j] = resultado;
+			}
 		}
 	}
+	ImprimeMatriz(NFilas, NColumnas, Tabla3);
 }
