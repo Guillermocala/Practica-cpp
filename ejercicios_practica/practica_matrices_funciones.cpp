@@ -17,6 +17,7 @@ int main()
 	void DiagonalPrincipal(int NumFilas, int NumColumnas, int Tabla[NFilas][NColumnas]);
 	void DiagonalSecundaria(int NumFilas, int NumColumnas, int Tabla[NFilas][NColumnas]);
 	void MatrizTranspuesta(int NFilas, int NColumnas, int Tabla[][50], int Tabla2[][50]);
+	void MatrizNoCuadradaTranspuesta(int *NFilas, int *NColumnas, int Tabla[][50], int Tabla2[][50]);
 	void MultiplicacionEscalar(int NFilas, int NColumnas, int Tabla[][50], int Tabla2[][50]);
 	void MultiplicaMatrices(int NFilas, int NColumnas, int Tabla[][50], int Tabla2[][50], int Tabla3[][50]);
 	void SumaMatrices(int NFilas, int NColumnas, int Tabla[][50], int Tabla2[][50], int Tabla3[][50]);
@@ -121,10 +122,17 @@ int main()
 					switch (Opcion)
 					{
 						case 1 :
-							/*unexpected function*/
+							RecibirMatriz(&CFilas, &CColumnas, Matriz);
+							ImprimeMatriz(CFilas, CColumnas, Matriz);
+							MatrizNoCuadradaTranspuesta(&CFilas, &CColumnas, Matriz, Matriz2);
+							ImprimeMatriz(CFilas, CColumnas, Matriz2);
+							cout << endl;
 							break;
 						case 2 :
-							/*unexpected function*/
+							RecibirMatriz(&CFilas, &CColumnas, Matriz);
+							ImprimeMatriz(CFilas, CColumnas, Matriz);
+							MultiplicacionEscalar(CFilas, CColumnas, Matriz, Matriz2);
+							cout << endl;
 							break;
 						default :
 							cout << "Usted ha ingresado un valor invalido!" << endl;
@@ -139,13 +147,28 @@ int main()
 					switch (Opcion)
 					{
 						case 1 :
-							/*unexpected function*/
+							cout << "Ingrese la primera matriz";
+							RecibirMatriz(&CFilas, &CColumnas, Matriz);
+							cout << "Ingrese la segunda matriz";
+							RecibirMatriz(&CFilas2, &CColumnas2, Matriz2);
+							cout << "la suma de las matrices es: " << endl;
+							SumaMatrices(CFilas, CColumnas, Matriz, Matriz2, Matriz3);
 							break;
 						case 2 :
-							/*unexpected function*/
+							cout << "Ingrese la primera matriz";
+							RecibirMatriz(&CFilas, &CColumnas, Matriz);
+							cout << "Ingrese la segunda matriz";
+							RecibirMatriz(&CFilas2, &CColumnas2, Matriz2);
+							cout << "la suma de las matrices es: " << endl;
+							RestaMatrices(CFilas, CColumnas, Matriz, Matriz2, Matriz3);
 							break;
 						case 3 :
-							/*unexpected function*/
+							cout << "Ingrese la primera matriz";
+							RecibirMatriz(&CFilas, &CColumnas, Matriz);
+							cout << "Ingrese la segunda matriz";
+							RecibirMatriz(&CFilas2, &CColumnas2, Matriz2);
+							cout << "la multiplicacion de las matrices es: " << endl;
+							MultiplicaMatrices(CFilas, CColumnas, Matriz, Matriz2, Matriz3);
 							break;
 						default :
 							cout << "Usted ha ingresado un valor invalido!" << endl;
@@ -235,6 +258,30 @@ void MatrizTranspuesta(int NFilas, int NColumnas, int Tabla[][50], int Tabla2[][
 		}
 	}
 	ImprimeMatriz(NFilas, NColumnas, Tabla2);
+}
+void MatrizNoCuadradaTranspuesta(int *NFilas, int *NColumnas, int Tabla[][50], int Tabla2[][50])
+{
+	cout << "\nLa matriz transpuesta es:" << endl; 
+	for (int i = 0; i < *NFilas; i++)
+	{
+		for (int j = 0; j < *NColumnas; j++)
+		{
+			Tabla2[j][i] = Tabla[i][j];
+		}
+	}
+	int Puente;
+	if (*NFilas > *NColumnas)
+	{
+		Puente = (*NFilas - *NColumnas);
+		*NColumnas += Puente;
+		*NFilas -= Puente;
+	}
+	else
+	{
+		Puente = (*NColumnas - *NFilas);
+		*NColumnas -= Puente;
+		*NFilas += Puente;
+	}
 }
 void MultiplicacionEscalar(int NFilas, int NColumnas, int Tabla[][50], int Tabla2[][50])
 {
