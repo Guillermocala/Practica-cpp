@@ -1,5 +1,5 @@
 /*
-*guillermo cala; dec/ 22 /18; actualizacion: dec/ 24/ 18; actualizacion: dec/ 30/ 18
+*guillermo cala; dec/ 22 /18; actualizacion: dec/ 24/ 18; actualizacion: dec/ 30/ 18; actualizacion: jan/ 2/ 19
 *repaso de matrices con funciones
 *procesador de funciones con capacidad de una o dos matrices y de hasta max 50 dimensiones
 */
