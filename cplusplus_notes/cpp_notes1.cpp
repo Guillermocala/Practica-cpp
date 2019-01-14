@@ -7,9 +7,9 @@ using namespace std;
 
 int main()
 {
-	cout << "Size of char : " << sizeof(char) << endl;
-	cout << "Size of char16 : " << sizeof(char16_t) << endl;
-	cout << "Size of char32 : " << sizeof(char32_t) << endl;
+    cout << "Size of char : " << sizeof(char) << endl;
+    cout << "Size of char16 : " << sizeof(char16_t) << endl;
+    cout << "Size of char32 : " << sizeof(char32_t) << endl;
     cout << "Size of wchar_t : " << sizeof(wchar_t) << endl;
     cout << "Size of short int : " << sizeof(short int) << endl;
     cout << "Size of int : " << sizeof(int) << endl;
@@ -18,7 +18,7 @@ int main()
     cout << "Size of float : " << sizeof(float) << endl;
     cout << "Size of double : " << sizeof(double) << endl;
     cout << "Size of long double : " << sizeof(long double) << endl;
-	cout << "Size of bool : " << sizeof(bool) << endl;
+    cout << "Size of bool : " << sizeof(bool) << endl;
 	system("pause");
 	return 0;
 }
