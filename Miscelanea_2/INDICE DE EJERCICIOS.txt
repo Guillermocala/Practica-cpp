@@ -1,0 +1,19 @@
+1-Realizar un programa con funciones que dada una fecha y luego una cantidad de dias, imprimir la nueva fecha. Tener en cuenta que hay meses con 31, 30 y hasta 28 dias.
+2-Sea Par_Impar un arreglo de enteros con tamaño 10, realice un programa que cargue automaticamente numeros pares en las posiciones que sean pares e impares donde las posiciones sean impares y calcule su promedio e imprima en pantalla.
+3-Haga un programa usando funciones recursivas que calcule la potencia de un numero entero elevado a un numero natural solo en la base a sumas. Sugerencia recuerde que el producto se puede hacer en base a sumas.
+4-Un sensor submarino instalado frente a nuestras costas toma lecturas de la temperatura del agua(grados centigrados) y el nivel ruido(decibelios) todos los meses y los almacena en una matriz de orden 12x2. construya un programa que determine mensualmente los valores promedios, minimos y maximos del sensor.
+5-Realice un programa con funciones recursivas y de manera iterativa que calcule e imprima en pantalla los N primeros numeros primos siendo N un numero que se introduce por teclado. Posteriormente, el programa debera mostrar todos los numeros primos que hay entre 1 y N.
+6-Dado los vectores A y B de 7 elementos numericos cada uno realice la siguiente operacion. Llene el vector A con numeros pares comprendidos en el intervalo 100 a 120. El vector B debe llenarse a partir del ultimo elemento del vector A(forma decreciente). El resultado es que el primer elemento del vector B debe ser el ultimo elemento del vector A, y el ultimo elemento del vector B debe ser el primer elemento del vector A. Reste ambos vectores A-B almacenando el resultado en un vector R
+7-Realice un programa con funciones sobrecargadas en el que se necesita implementar un control de minutos en un centro de comunicaciones. Usted dispone de una matriz de 300x6. Una llamada local tiene un precio de Bs 100 por minuto, una llamada a celular Bs 350 y una llamada internacional Bs 500. Al finalizar cada llamada almacene lo siguiente la siguiente: En la columna 0 se almacenan la cantidad de minutos de la llamada, en la columna 1 se almacena el tipo de llamada(local = 1, celular = 2, internacional = 3), en la columna 2 se coloca la tarifa de tipo de llamada, en la columna 3 se coloca el costo de llamada(minutos * tarifa), en la columna 4 se coloca el monto del impuesto(costo_llamada * iva), en la columna 5 se almacena el costo total de la llamada. Al final del dia se necesita generar el repote con los totales, promedios, minimos y maximos de cada columna.
+8-Construya un algoritmo que realice las siguientes operaciones:
+	-Tiene dos vectores numericos de 100 elementos cada uno. Asegurese que para cada vector no existan dos elementos consecutivos repetidos.
+	-Para el vector A determine el promedio de valores de las pocisiones pares del vector.
+	-Para el vector B determine el promedio de valores de las pocisiones impares del vector.
+	-Sume los dos vectores y guarde el resultado en un vector C. 
+	-Imprima C.
+	-Imprima el promedio pedido para el vector A y el vector B.
+9-Realice un programa con funciones donde se carga, ordena e imprime cadenas de caracteres al igual que contar la cantidad de caracteres por nombre y el total de ellos.
+10-Sea una matriz M de orden 5x5 realice las siguientes operaciones:
+	-Llene la matriz con valores positivos impares.
+	-Determine cual es el mayor elemento de la matriz
+	-Determine cual es el menor elemento de la matriz
