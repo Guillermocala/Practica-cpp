@@ -1,6 +1,6 @@
 /*
 *guillermo cala; jan/ 9/ 19
-*algoritmo para ver el tomaño de los typos de datos fundamentales 
+*algoritmo para ver el tomaño de los typos de datos fundamentales
 */
 #include <iostream>
 using namespace std;
@@ -19,6 +19,6 @@ int main()
     cout << "Size of double : " << sizeof(double) << endl;
     cout << "Size of long double : " << sizeof(long double) << endl;
     cout << "Size of bool : " << sizeof(bool) << endl;
-	system("pause");
+	cin.get();
 	return 0;
 }

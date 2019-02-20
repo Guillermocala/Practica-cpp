@@ -21,6 +21,6 @@ apreciar en el codigo fuente";
 	cout << frase4 << endl;
 	string frase5 = R"(esta es otra raw string\nun salto aqui)";
 	cout << frase5 << endl;
-	system("pause");
+	cin.get();
 	return 0;
 }

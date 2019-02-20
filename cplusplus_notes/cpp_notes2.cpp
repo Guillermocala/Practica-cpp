@@ -14,6 +14,6 @@ int main()
 	cout << cadena2 << endl;
 	string cadena3 {"esta es la cadena 3"};//uniform initialization (iwth the operator {})
 	cout << cadena3 << endl;
-	system("pause");
+	cin.get();
 	return 0;
 }
