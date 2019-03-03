@@ -6,7 +6,7 @@
 *- Modificar el stock y precio de un producto dado.
 */
 #include <iostream>
-#include "string.h"
+#include "string"
 using namespace std;
 
 struct producto
