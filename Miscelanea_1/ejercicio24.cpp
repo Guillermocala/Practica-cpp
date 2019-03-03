@@ -14,15 +14,17 @@ struct producto
 	string nombre;
 	int precio;
 	int cantidad;
-} productos[11];
+} productos[10];
 int menu();
-void ImprimeList();
 void IngresaProd();
-int cont = -1;
+void BuscarProd();
+void EditProd();
+void ElimProd();
+void ImprimeList();
+int cont = -1; /*este cont nos permite llevar orden para el ingreso de datos*/
 
 int main()
 {
-
 	int sw = 1;
 	do
 	{
@@ -30,21 +32,32 @@ int main()
 		{
 			case 1:
 				system("clear");
+				cout << "\tANADIR PRODUCTO" << endl;
 				IngresaProd();
+				cin.get();
 				break;
 			case 2:
 				system("clear");
+				cout << "\tBUSCAR PRODUCTO POR NOMBRE" << endl;
+				BuscarProd();
+				cin.get();
 				break;
 			case 3:
 				system("clear");
+				cout << "\tMODIFICAR PRODUCTO BUSCANDO POR INDICE" << endl;
+				EditProd();
+				cin.get();
 				break;
 			case 4:
 				system("clear");
+				cout << "\tLISTA DE PRODUCTOS EN FORMA CRECIENTE" << endl;
 				ImprimeList();
 				cin.get();
 				break;
 			case 5:
 				system("clear");
+				cout << "\tELIMINAR PRODUCTO(VACIAR SUS CAMPOS)" << endl;
+				ElimProd();
 				break;
 			case 0:
 				sw = 0;
@@ -76,7 +89,7 @@ int menu()
 	int opcion, sw = 1;
 	do
 	{
-		cout << "ingrese una opcion: ";
+		cout << "Ingrese una opcion: ";
 		cin >> opcion;
 		if(opcion >= 0 && opcion <= 5)
 		{
@@ -96,9 +109,9 @@ int menu()
 void IngresaProd()
 {
 	int i = 0;
-	for(i += cont; i < 10; i++)
+	for(i += cont; i < 10; i++)/*aqui sumamos el cont con el indice del bucle para ingresar de forma consecutiva*/
 	{
-		cout << "Ingrese el nombre: ";
+		cout << "Ingrese el nombre(sin espacios): ";
 		cin >> productos[i].nombre;
 		cout << "Ingrese el precio: ";
 		cin >> productos[i].precio;
@@ -106,15 +119,70 @@ void IngresaProd()
 		cin >> productos[i].cantidad;
 		break;
 	}
+	if(cont >= 10)
+	{
+		cout << "No puede ingresar mas elementos. Solo 10!" << endl;
+	}
+	cin.get();
+}
+void BuscarProd()
+{
+	string indice;
+	cout << "Ingrese el nombre del producto a buscar: ";
+	cin >> indice;
+	for(int i = 0; i < 10; i++)
+	{
+		if(indice == productos[i].nombre)
+		{
+			cout << "Precio: " << productos[i].precio << endl;
+			cout << "Cantidad en stock: " << productos[i].cantidad << endl;
+			break;
+		}
+		else
+		{
+			cout << "No se encontro el elemento..." << endl;
+			break;
+		}
+	}
+	cin.get();
+}
+void EditProd()
+{
+	int indice;
+	cout << "Ingrese el indice del producto: ";
+	cin >> indice;
+	indice -= 1;
+	cout << "Nombre: " << productos[indice].nombre << endl ;
+	cout << "Precio: " << productos[indice].precio << endl;
+	cout << "Cantidad en stock: " << productos[indice].cantidad << endl;
+	cout << "Ingrese los nuevos datos..." << endl;
+	cout << "Ingrese el nombre(sin espacios): ";
+	cin >> productos[indice].nombre;
+	cout << "Ingrese el precio: ";
+	cin >> productos[indice].precio;
+	cout << "Ingrese la cantidad en stock: ";
+	cin >> productos[indice].cantidad;
+	cin.get();
+}
+void ElimProd()
+{
+	int indice;
+	cout << "El espacio del correspondiente producto quedara en blanco y para volver a usarlo debe usar la opcion 3(MODIFICAR)" << endl;
+	cout << "Ingrese el indice del producto: ";
+	cin >> indice;
+	indice -= 1;
+	productos[indice].nombre = "Unsigned";
+	productos[indice].precio = 0;
+	productos[indice].cantidad = 0;
 }
 void ImprimeList()
 {
 	for(int i = 0; i < 10; i++)
 	{
 		cout << "\tPRODUCTO N-" << i + 1 << endl;
-		cout << "Nombre: " << productos[i].nombre << endl;
+		cout << "Nombre: " << productos[i].nombre << endl ;
 		cout << "Precio: " << productos[i].precio << endl;
-		cout << "cantidad en stock: " << productos[i].cantidad << endl;
+		cout << "Cantidad en stock: " << productos[i].cantidad << endl;
 	}
 	cin.get();/*con esta pausa evitamos que se limpie pantalla antes de mostrar la info de este proc*/
 }
