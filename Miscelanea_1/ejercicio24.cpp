@@ -6,19 +6,52 @@
 *- Modificar el stock y precio de un producto dado.
 */
 #include <iostream>
+#include "string"
 using namespace std;
 
-
+struct producto
+{
+	string nombre;
+	int precio;
+	int cantidad;
+} productos[10];
+void menu();
 
 int main()
 {
+	menu();
 
 
 
 
-
-
-
-	system("pause");
+	cin.get();
 	return 0;
+}
+void menu()
+{
+	system("clear");
+	cout << "\t###############################################" << endl;
+	cout << "\t####                 TIENDA                ####" << endl;
+	cout << "\t###############################################" << endl;
+	cout << "\t###############################################" << endl;
+	cout << "\t####   1- Anadir un producto               ####" << endl;
+	cout << "\t###############################################" << endl;
+	cout << "\t####   2- Buscar un producto(nombre)       ####" << endl;
+	cout << "\t###############################################" << endl;
+	cout << "\t####   3- Modificar el producto            ####" << endl;
+	cout << "\t###############################################" << endl;
+	int opcion, sw = 1;
+	do
+	{
+		cout << "ingrese una opcion: ";
+		cin >> opcion;
+		if (opcion >= 1 && opcion <= 3)
+		{
+			sw = 0;
+		}
+		else
+		{
+			cout << "Debe ingresar un numero del 1 al 3..." << endl;
+		}
+	}while(sw != 0);
 }
