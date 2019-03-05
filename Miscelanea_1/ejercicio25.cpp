@@ -13,14 +13,18 @@
 using namespace std;
 struct Estudiante{
    string nombre;
-   int nota;
+   float nota;
 } alum[10];
 
-int menu();
+int Menu();
 void IngresaEst();
 void BuscarEst();
 void EditEst();
 void ImprimeEst();
+float Media();
+float MediaMenor5();
+void MejorEst();
+void PeorEst();
 void ElimEst();
 int cont = -1;
 
@@ -29,7 +33,7 @@ int main(int argc, char const *argv[])
 	int sw = 1;
 	do
 	{
-		switch (menu())
+		switch (Menu())
 		{
 			case 1:
 				system("clear");
@@ -58,20 +62,27 @@ int main(int argc, char const *argv[])
          case 5:
 				system("clear");
 				cout << "\tMEDIA DE TODAS LAS NOTAS" << endl;
-				cin.get();
+            cout << "La media de todas las notas es: " << Media() << endl;
+				cin.ignore();
+            cin.get();
 				break;
 			case 6:
 				system("clear");
 				cout << "\tMEDIA DE NOTAS < 5" << endl;
+            cout << "La media de todas las notas menores de 5 es: " << MediaMenor5() << endl;
+				cin.ignore();
+            cin.get();
 				break;
 			case 7:
 				system("clear");
 				cout << "\tMEJOR ALUMNO" << endl;
+            MejorEst();
 				cin.get();
 				break;
 			case 8:
 				system("clear");
 				cout << "\tPEOR ALUMNO" << endl;
+            PeorEst();
 				cin.get();
 				break;
 			case 9:
@@ -88,7 +99,7 @@ int main(int argc, char const *argv[])
 	cin.get();
 	return 0;
 }
-int menu()
+int Menu()
 {
 	system("clear");
 	cout << "\t#########################################################" << endl;
@@ -137,20 +148,35 @@ int menu()
 }
 void IngresaEst()
 {
-	int i = 0;
+	int i = 0, test;
+   bool sw = true;
 	for(i += cont; i < 10; i++)/*aqui sumamos el cont con el indice del bucle para ingresar de forma consecutiva*/
 	{
 		cout << "Ingrese el nombre: ";
 		cin.ignore();
 		getline (cin, alum[i].nombre);
-      cout << "Ingrese la nota: ";
-      cin >> alum[i].nota;
+      cout << "las notas van del 0 al 10, siendo 10 la nota max" << endl;
+      while(sw == true)
+      {
+         cout << "Ingrese la nota: ";
+         cin >> test;
+         if (test >= 0 && test <=10)
+         {
+            alum[i].nota = test;
+            sw = false;
+         }
+         else
+         {
+            cout << "La nota debe ser entre 0 y 10!!!" << endl;
+         }
+      }
 		break;
 	}
 	if(cont >= 10)
 	{
 		cout << "No puede ingresar mas elementos. Solo 10!" << endl;
 	}
+   cin.ignore();
 }
 void BuscarEst()
 {
@@ -187,10 +213,12 @@ void EditEst()
       cout << "Ingrese el nuevo nombre: ";
       cin.ignore();
       getline (cin, alum[indice].nombre);
+      cout << "Ingrese la nueva nota: ";
+      cin >> alum[indice].nota;
    }
    else
    {
-      cout << "Ingrese la nueva nota: " << endl;
+      cout << "Ingrese la nueva nota: ";
       cin >> alum[indice].nota;
    }
 	cin.get();
@@ -203,7 +231,7 @@ void ImprimeEst()
 		cout << "Nombre: " << alum[i].nombre << endl ;
 		cout << "Nota: " << alum[i].nota << endl;
 	}
-	cin.get();/*con esta pausa evitamos que se limpie pantalla antes de mostrar la info de este proc*/
+	cin.ignore();/*con esta pausa evitamos que se limpie pantalla antes de mostrar la info de este proc*/
 }
 void ElimEst()
 {
@@ -214,4 +242,85 @@ void ElimEst()
 	indice -= 1;
 	alum[indice].nombre = "Unsigned";
 	alum[indice].nota = 0;
+}
+float Media()
+{
+   float result, suma = 0;
+   for (int i = 0; i < 10; i++)
+   {
+      suma += alum[i].nota;
+   }
+   result = (suma / 10);
+   return result;
+}
+float MediaMenor5()
+{
+   int cant = 0;
+   float result, suma = 0;
+   for(int i = 0; i < 10; i++)
+   {
+      if(alum[i].nota < 5)
+      {
+         suma += alum[i].nota;
+         cant++;
+      }
+   }
+   result = (suma / cant);
+   return result;
+}
+void MejorEst()
+{
+   string mejor;
+   int mayor = 0;
+   for(int i = 0; i < 10; i++)
+   {
+      if(alum[i].nota == 10)
+      {
+         cout << "El estudiante " << alum[i].nombre << " tiene nota maxima(10)..." << endl;
+         mayor = alum[i].nota;
+         mejor = alum[i].nombre;
+      }
+      else if(alum[i].nota > mayor)
+      {
+         mayor = alum[i].nota;
+         mejor = alum[i].nombre;
+      }
+   }
+   if(mayor == 0)
+   {
+      cout << "Ningun estudiante supera la nota minima(0)..." << endl;
+   }
+   else
+   {
+      cout << "El mejor es: " << mejor << " y su nota es: " << mayor << endl;
+   }
+   cin.ignore();
+}
+void PeorEst()
+{
+   string peor;
+   int mayor = 10;
+   for(int i = 0; i < 10; i++)
+   {
+      if(alum[i].nota == 0)
+      {
+         cout << "El estudiante " << alum[i].nombre << " tiene nota minima(0)..." << endl;
+         mayor = alum[i].nota;
+         peor = alum[i].nombre;
+      }
+      else if(alum[i].nota < mayor)
+      {
+         mayor = alum[i].nota;
+         peor = alum[i].nombre;
+      }
+   }
+   if(mayor == 10)
+   {
+      cout << "Ningun estudiante esta por debajo de la nota maxima(10)..." << endl;
+   }
+   else
+   {
+      cout << "El peor es: " << peor << " y su nota es: " << mayor << endl;
+   }
+   cin.ignore();
 }
