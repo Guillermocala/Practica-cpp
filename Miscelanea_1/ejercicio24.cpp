@@ -1,29 +1,27 @@
 /*
-*guillermo cala; jan/ 05/ 19... mod 3/ march/ 19
-*elaborar un algoritmo que gestione los datos de stock de una tienda de comestibles, la información a recoger será: nombre del producto, precio, cantidad en *stock. La tienda dispone de 10 productos distintos. El programa debe ser capaz de:
-*- Dar de alta un producto nuevo.
-*- Buscar un producto por su nombre.
-*- Modificar el stock y precio de un producto dado.
+*guillermo cala; march/ 04/ 19
+*elaborar un algoritmo que gestiona las notas de una clase de 20 alumnos(ni por el putas voy a hacer pruebas para 20, lo reduzco a 10) de los cuales sabemos el nombre y la nota. El programa debe ser capaz de:
+*- Buscar un alumno.
+*- Modificar su nota.
+*- Realizar la media de todas las notas.
+*- Realizar la media de las notas menores de 5.
+*- Mostrar el alumno que mejores notas ha sacado.
+*- Mostrar el alumno que peores notas ha sacado.
 */
-#include <iostream>
+#include "iostream"
 #include "string"
 using namespace std;
+struct Estudiante{
+   string nombre;
+   int notas[10];
+} alum[10];
 
-struct producto
-{
-	string nombre;
-	int precio;
-	int cantidad;
-} productos[10];
 int menu();
-void IngresaProd();
-void BuscarProd();
-void EditProd();
-void ElimProd();
+void IngresaEst();
 void ImprimeList();
-int cont = -1; /*este cont nos permite llevar orden para el ingreso de datos*/
+int cont = -1;
 
-int main()
+int main(int argc, char const *argv[])
 {
 	int sw = 1;
 	do
@@ -32,32 +30,44 @@ int main()
 		{
 			case 1:
 				system("clear");
-				cout << "\tANADIR PRODUCTO" << endl;
-				IngresaProd();
+				cout << "\tANADIR ESTUDIANTE" << endl;
+				IngresaEst();
 				cin.get();
 				break;
 			case 2:
 				system("clear");
-				cout << "\tBUSCAR PRODUCTO POR NOMBRE" << endl;
-				BuscarProd();
+				cout << "\tBUSCAR UN ALUMNO(NOMBRE)" << endl;
+				void ImprimeList();
 				cin.get();
 				break;
 			case 3:
 				system("clear");
-				cout << "\tMODIFICAR PRODUCTO BUSCANDO POR INDICE" << endl;
-				EditProd();
+				cout << "\tMODIFICAR DATOS DE ALUMNO" << endl;
 				cin.get();
 				break;
 			case 4:
 				system("clear");
-				cout << "\tLISTA DE PRODUCTOS EN FORMA CRECIENTE" << endl;
-				ImprimeList();
+				cout << "\tMEDIA DE TODAS LAS NOTAS" << endl;
 				cin.get();
 				break;
 			case 5:
 				system("clear");
-				cout << "\tELIMINAR PRODUCTO(VACIAR SUS CAMPOS)" << endl;
-				ElimProd();
+				cout << "\tMEDIA DE NOTAS < 5" << endl;
+				break;
+			case 6:
+				system("clear");
+				cout << "\tMEJOR ALUMNO" << endl;
+				cin.get();
+				break;
+			case 7:
+				system("clear");
+				cout << "\tPEOR ALUMNO" << endl;
+				cin.get();
+				break;
+			case 8:
+				system("clear");
+				cout << "\tELIMINAR ALUMNO(VACIAR SUS CAMPOS)" << endl;
+				cin.get();
 				break;
 			case 0:
 				sw = 0;
@@ -70,28 +80,34 @@ int main()
 int menu()
 {
 	system("clear");
-	cout << "\t###############################################" << endl;
-	cout << "\t####                 TIENDA                ####" << endl;
-	cout << "\t###############################################" << endl;
-	cout << "\t###############################################" << endl;
-	cout << "\t####   1- Anadir un producto               ####" << endl;
-	cout << "\t###############################################" << endl;
-	cout << "\t####   2- Buscar un producto(nombre)       ####" << endl;
-	cout << "\t###############################################" << endl;
-	cout << "\t####   3- Modificar el producto            ####" << endl;
-	cout << "\t###############################################" << endl;
-	cout << "\t####   4- Mostrar listado de productos     ####" << endl;
-	cout << "\t###############################################" << endl;
-	cout << "\t####   5- Eliminar Producto                ####" << endl;
-	cout << "\t###############################################" << endl;
-	cout << "\t####   0- Salir del programa               ####" << endl;
-	cout << "\t###############################################" << endl;
+	cout << "\t#########################################################" << endl;
+	cout << "\t####              ESCUELA X                          ####" << endl;
+	cout << "\t#########################################################" << endl;
+	cout << "\t#########################################################" << endl;
+	cout << "\t####   1- Anadir un alumno                           ####" << endl;
+	cout << "\t#########################################################" << endl;
+	cout << "\t####   2- Buscar un alumno(nombre)                   ####" << endl;
+	cout << "\t#########################################################" << endl;
+	cout << "\t####   3- Modificar los datos de un alumno           ####" << endl;
+	cout << "\t#########################################################" << endl;
+	cout << "\t####   4- Media de todas las notas                   ####" << endl;
+	cout << "\t#########################################################" << endl;
+	cout << "\t####   5- Media de las notas menores que 5           ####" << endl;
+	cout << "\t#########################################################" << endl;
+   cout << "\t####   6- Alumno con las mejores notas               ####" << endl;
+   cout << "\t#########################################################" << endl;
+   cout << "\t####   7- Alumno con las peores notas                ####" << endl;
+   cout << "\t#########################################################" << endl;
+   cout << "\t####   8- Eliminar un alumno                         ####" << endl;
+   cout << "\t#########################################################" << endl;
+	cout << "\t####   0- Salir del programa                         ####" << endl;
+	cout << "\t#########################################################" << endl;
 	int opcion, sw = 1;
 	do
 	{
 		cout << "Ingrese una opcion: ";
 		cin >> opcion;
-		if(opcion >= 0 && opcion <= 5)
+		if(opcion >= 0 && opcion <= 8)
 		{
 			if(opcion == 1)
 			{
@@ -101,22 +117,19 @@ int menu()
 		}
 		else
 		{
-			cout << "Debe ingresar un numero del 0 al 5..." << endl;
+			cout << "Debe ingresar un numero del 0 al 8..." << endl;
 		}
 	}while(sw != 0);
 	return opcion;
 }
-void IngresaProd()
+void IngresaEst()
 {
 	int i = 0;
 	for(i += cont; i < 10; i++)/*aqui sumamos el cont con el indice del bucle para ingresar de forma consecutiva*/
 	{
-		cout << "Ingrese el nombre(sin espacios): ";
-		cin >> productos[i].nombre;
-		cout << "Ingrese el precio: ";
-		cin >> productos[i].precio;
-		cout << "Ingrese la cantidad en stock: ";
-		cin >> productos[i].cantidad;
+		cout << "Ingrese el nombre: ";
+		cin.ignore();
+		getline (cin, alum[i].nombre);
 		break;
 	}
 	if(cont >= 10)
@@ -125,64 +138,13 @@ void IngresaProd()
 	}
 	cin.get();
 }
-void BuscarProd()
-{
-	string indice;
-	cout << "Ingrese el nombre del producto a buscar: ";
-	cin >> indice;
-	for(int i = 0; i < 10; i++)
-	{
-		if(indice == productos[i].nombre)
-		{
-			cout << "Precio: " << productos[i].precio << endl;
-			cout << "Cantidad en stock: " << productos[i].cantidad << endl;
-			break;
-		}
-		else
-		{
-			cout << "No se encontro el elemento..." << endl;
-			break;
-		}
-	}
-	cin.get();
-}
-void EditProd()
-{
-	int indice;
-	cout << "Ingrese el indice del producto: ";
-	cin >> indice;
-	indice -= 1;
-	cout << "Nombre: " << productos[indice].nombre << endl ;
-	cout << "Precio: " << productos[indice].precio << endl;
-	cout << "Cantidad en stock: " << productos[indice].cantidad << endl;
-	cout << "Ingrese los nuevos datos..." << endl;
-	cout << "Ingrese el nombre(sin espacios): ";
-	cin >> productos[indice].nombre;
-	cout << "Ingrese el precio: ";
-	cin >> productos[indice].precio;
-	cout << "Ingrese la cantidad en stock: ";
-	cin >> productos[indice].cantidad;
-	cin.get();
-}
-void ElimProd()
-{
-	int indice;
-	cout << "El espacio del correspondiente producto quedara en blanco y para volver a usarlo debe usar la opcion 3(MODIFICAR)" << endl;
-	cout << "Ingrese el indice del producto: ";
-	cin >> indice;
-	indice -= 1;
-	productos[indice].nombre = "Unsigned";
-	productos[indice].precio = 0;
-	productos[indice].cantidad = 0;
-}
 void ImprimeList()
 {
 	for(int i = 0; i < 10; i++)
 	{
-		cout << "\tPRODUCTO N-" << i + 1 << endl;
-		cout << "Nombre: " << productos[i].nombre << endl ;
-		cout << "Precio: " << productos[i].precio << endl;
-		cout << "Cantidad en stock: " << productos[i].cantidad << endl;
+		cout << "\tESTUDIANTE N-" << i + 1 << endl;
+		cout << "Nombre: " << alum[i].nombre << endl ;
+		cout << "notas: " << alum[i].notas << endl;
 	}
 	cin.get();/*con esta pausa evitamos que se limpie pantalla antes de mostrar la info de este proc*/
 }
