@@ -18,6 +18,7 @@ struct Estudiante{
 
 int menu();
 void IngresaEst();
+void ImprimeList();
 int cont = -1;
 
 int main(int argc, char const *argv[])
@@ -36,6 +37,7 @@ int main(int argc, char const *argv[])
 			case 2:
 				system("clear");
 				cout << "\tBUSCAR UN ALUMNO(NOMBRE)" << endl;
+				void ImprimeList();
 				cin.get();
 				break;
 			case 3:
@@ -126,8 +128,8 @@ void IngresaEst()
 	for(i += cont; i < 10; i++)/*aqui sumamos el cont con el indice del bucle para ingresar de forma consecutiva*/
 	{
 		cout << "Ingrese el nombre: ";
-		getline (cin, alum[0].nombre);
-		cout << "el nombre es: " << alum[0].nombre << endl;
+		cin.ignore();
+		getline (cin, alum[i].nombre);
 		break;
 	}
 	if(cont >= 10)
@@ -135,4 +137,14 @@ void IngresaEst()
 		cout << "No puede ingresar mas elementos. Solo 10!" << endl;
 	}
 	cin.get();
+}
+void ImprimeList()
+{
+	for(int i = 0; i < 10; i++)
+	{
+		cout << "\tESTUDIANTE N-" << i + 1 << endl;
+		cout << "Nombre: " << alum[i].nombre << endl ;
+		cout << "notas: " << alum[i].notas << endl;
+	}
+	cin.get();/*con esta pausa evitamos que se limpie pantalla antes de mostrar la info de este proc*/
 }
