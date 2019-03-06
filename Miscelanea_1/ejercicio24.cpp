@@ -1,5 +1,5 @@
 /*
-*guillermo cala; jan/ 05/ 19... mod 3/ march/ 19
+*guillermo cala; jan/ 05/ 19... mod 3/ march/ 19... mod 5/ march/ 19
 *elaborar un algoritmo que gestione los datos de stock de una tienda de comestibles, la información a recoger será: nombre del producto, precio, cantidad en *stock. La tienda dispone de 10 productos distintos. El programa debe ser capaz de:
 *- Dar de alta un producto nuevo.
 *- Buscar un producto por su nombre.
@@ -40,7 +40,6 @@ int main()
 				system("clear");
 				cout << "\tBUSCAR PRODUCTO POR NOMBRE" << endl;
 				BuscarProd();
-				cin.get();
 				break;
 			case 3:
 				system("clear");
@@ -111,8 +110,11 @@ void IngresaProd()
 	int i = 0;
 	for(i += cont; i < 10; i++)/*aqui sumamos el cont con el indice del bucle para ingresar de forma consecutiva*/
 	{
-		cout << "Ingrese el nombre(sin espacios): ";
-		cin >> productos[i].nombre;
+      /*esta func permite limpiar el bufer del flujo de datos, antes de la fun
+      hay una salida y getline la recibe como salto de linea anulando la recepcion de datos*/
+      cin.ignore();
+		cout << "Ingrese el nombre: ";
+		getline (cin, productos[i].nombre);
 		cout << "Ingrese el precio: ";
 		cin >> productos[i].precio;
 		cout << "Ingrese la cantidad en stock: ";
@@ -128,8 +130,9 @@ void IngresaProd()
 void BuscarProd()
 {
 	string indice;
+   cin.ignore();
 	cout << "Ingrese el nombre del producto a buscar: ";
-	cin >> indice;
+	getline(cin, indice);
 	for(int i = 0; i < 10; i++)
 	{
 		if(indice == productos[i].nombre)
@@ -156,8 +159,9 @@ void EditProd()
 	cout << "Precio: " << productos[indice].precio << endl;
 	cout << "Cantidad en stock: " << productos[indice].cantidad << endl;
 	cout << "Ingrese los nuevos datos..." << endl;
-	cout << "Ingrese el nombre(sin espacios): ";
-	cin >> productos[indice].nombre;
+   cin.ignore();
+	cout << "Ingrese el nombre: ";
+	getline (cin, productos[indice].nombre);
 	cout << "Ingrese el precio: ";
 	cin >> productos[indice].precio;
 	cout << "Ingrese la cantidad en stock: ";

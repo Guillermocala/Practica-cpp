@@ -45,7 +45,6 @@ int main(int argc, char const *argv[])
 				system("clear");
 				cout << "\tBUSCAR UN ALUMNO(NOMBRE)" << endl;
 				BuscarEst();
-				cin.get();
 				break;
 			case 3:
 				system("clear");
@@ -152,8 +151,8 @@ void IngresaEst()
    bool sw = true;
 	for(i += cont; i < 10; i++)/*aqui sumamos el cont con el indice del bucle para ingresar de forma consecutiva*/
 	{
+      cin.ignore();
 		cout << "Ingrese el nombre: ";
-		cin.ignore();
 		getline (cin, alum[i].nombre);
       cout << "las notas van del 0 al 10, siendo 10 la nota max" << endl;
       while(sw == true)
@@ -181,19 +180,20 @@ void IngresaEst()
 void BuscarEst()
 {
 	string indice;
+   cin.ignore();
 	cout << "Ingrese el nombre del estudiante a buscar: ";
-	cin >> indice;
+	getline (cin, indice);
 	for(int i = 0; i < 10; i++)
 	{
 		if(indice == alum[i].nombre)
 		{
 			cout << "Nota: " << alum[i].nota << endl;
-			break;
+         break;
 		}
 		else
 		{
 			cout << "No se encontro el estudiante..." << endl;
-			break;
+         break;
 		}
 	}
 	cin.get();
@@ -210,8 +210,8 @@ void EditEst()
    cin >> Confirm;
    if (Confirm == 'Y' || Confirm == 'y')
    {
-      cout << "Ingrese el nuevo nombre: ";
       cin.ignore();
+      cout << "Ingrese el nuevo nombre: ";
       getline (cin, alum[indice].nombre);
       cout << "Ingrese la nueva nota: ";
       cin >> alum[indice].nota;
