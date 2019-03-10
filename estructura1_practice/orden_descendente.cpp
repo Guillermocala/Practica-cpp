@@ -1,5 +1,5 @@
-/*LLenar una lista en orden descendente*/
-#include<iostream>
+/*ordenar una lista descendentemente*/
+#include <iostream>
 #include <stdlib.h>
 using namespace std;
 struct nodoa {
@@ -7,7 +7,7 @@ struct nodoa {
      nodoa *sig;
      nodoa *ant;
 };
-nodoa *ptr=NULL, *p,*r, *s, *j, *q;
+nodoa *ptr=NULL, *p,*r, *s, *j, *q, *k;
 nodoa *Insertar(nodoa *p, int xinfo);
 void ordenar(nodoa *p);
 void mostrar(nodoa *p);
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 			case 1:
 				cout<<"Ingrese el dato: ";
 				cin>>i;
-				s=Insertar(ptr, i);
+				ptr=Insertar(ptr, i);
             cin.get();
 				break;
 			case 2:
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
-nodoa *Insertar(nodoa *p, int xinfo)
+nodoa *Insertar(nodoa *ptr, int xinfo)
 {
 	p= (struct nodoa *) malloc (sizeof (nodoa));
 	p->info=xinfo;
@@ -60,14 +60,14 @@ nodoa *Insertar(nodoa *p, int xinfo)
   		p->ant=NULL;
 	}
   	else{
+      p->ant=NULL;
   		p->sig=ptr;
-		ptr->ant=p;
-		p->ant=NULL;
+		ptr->ant=NULL;
 		ptr=p;
   	}
 	return ptr;
 }
-void mostrar(nodoa *p)
+void mostrar(nodoa *ptr)
 {
 	system ("clear");
    r=ptr;
@@ -79,43 +79,43 @@ void mostrar(nodoa *p)
 	cout<<" NULL";
 	cin.get();
 }
-void ordenar(nodoa* p)
+void ordenar(nodoa *ptr)
 {
-   j = ptr;
+   p = ptr;
    if(ptr==NULL)
    {
       cout << "la lista esta vacia" << endl;
    }
-   else if(j->sig == NULL && j->ant == NULL)
+   else if(p->sig == NULL && p->ant == NULL)
    {
       cout << "la lista solo tiene un elemento" << endl;
    }
    else
    {
-
+      while(p->sig != NULL)
+      {
+         if(p->info <= p->sig->info)
+         {
+            k = p->sig;
+            p->sig = k->sig;
+            k->ant = p->ant;
+            k->sig = p;
+            p->ant = k;
+            while(k != NULL)
+            {
+               if(k->ant->info <= k->info)
+               {
+                  p = k->ant;
+                  k->ant = p->ant;
+                  p->sig = k->sig;
+                  k->sig = p;
+                  p->ant = k;
+               }
+               k = k->ant;
+            }
+         }
+         p = p->sig;
+      }
    }
-
-
-
    cin.get();
 }
-
-/*q=ptr;
-nodoa* aux=NULL;
-while(q!=NULL)
-{
-   j=q->sig;
-   while(j!=NULL)
-   {
-      if(q->info<j->info)
-      {
-         aux=j;                  //Aquí es
-         j->sig=q;              // donde me embolato
-         q->ant=j;               // help :(
-            q=aux;
-         }
-         j=j->sig;
-      }
-      q=q->sig;
-   }
-   */
