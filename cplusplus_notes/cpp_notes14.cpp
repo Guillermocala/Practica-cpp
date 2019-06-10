@@ -1,6 +1,6 @@
 /*
 *Guillermo Cala; 10/ 06/ 19
-*Arrays multidimensionales como arrays simples
+*Arrays multidimensionales operados como array simple
 */
 #include "iostream"
 using namespace std;
