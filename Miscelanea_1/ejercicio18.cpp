@@ -1,47 +1,61 @@
 /*
 *Guillermo Cala; Dec/ 05/ 18
-*elaborar un algoritmo que rellene un array de dos dimensiones con números pares 
-*lo pinte y después que pida una posición X,Y y mostrar el número correspondiente.
+*elaborar un algoritmo que rellene un array de dos dimensiones con nï¿½meros pares
+*lo pinte y despuï¿½s que pida una posiciï¿½n X,Y y mostrar el nï¿½mero correspondiente.
 */
 #include <iostream>
 using namespace std;
-
-int main ()
+void FillArray(int list[][10], const int * Fil, const int * Col);
+void PrintArray(int list[][10], const int * Fil, const int * Col);
+void LocatePoint(int list[][10]);
+int main()
 {
 	const int CFilas = 10;
 	const int CColumnas = 10;
 	int NumPares[CFilas][CColumnas];
-	int Numero = 2, NumFila, NumColumna;
-	for (int i = 0; i < CFilas; i++)
+	FillArray(NumPares, &CFilas, &CColumnas);
+	PrintArray(NumPares, &CFilas, &CColumnas);
+	LocatePoint(NumPares);
+	system("pause");
+	return 0;
+}
+void FillArray(int list[][10], const int * Fil, const int * Col)
+{
+	int Numero = 2;
+	for(int i = 0; i < *Fil; i++)
 	{
-		for (int j = 0; j < CColumnas; j++)
+		for(int j = 0; j < *Col; j++)
 		{
-			if (Numero % 2 == 0)
+			if(Numero % 2 == 0)
 			{
-				NumPares[i][j] = Numero;
+				list[i][j] = Numero;
 				Numero++;
 			}
 			else
 			{
-				NumPares[i][j] = Numero + 1;
+				list[i][j] = Numero + 1;
 			}
 			Numero++;
 		}
 	}
-	for (int i = 0; i < CFilas; i++)
+}
+void PrintArray(int list[][10], const int * Fil, const int * Col)
+{
+	for(int i = 0; i < *Fil; i++)/*imprime datos*/
 	{
-		for (int j = 0; j < CColumnas; j++)
+		for(int j = 0; j < *Col; j++)
 		{
-			cout << NumPares[i][j] << " ";
+			cout << " - " << list[i][j];
 		}
 		cout << endl;
 	}
-	cout << endl;
+}
+void LocatePoint(int list[][10])
+{
+	int NumFila, NumColumna;
 	cout << "Ingrese la Fila de la que desea obtener el dato: ";
 	cin >> NumFila;
 	cout << "Ingrese la Columna de la que desea obtener el dato: ";
 	cin >> NumColumna;
-	cout << "El dato es: "<< NumPares[NumFila - 1][NumColumna - 1] << endl;
-	system ("pause");
-	return 0;
+	cout << "El dato es: " << list[NumFila - 1][NumColumna - 1] << endl;
 }

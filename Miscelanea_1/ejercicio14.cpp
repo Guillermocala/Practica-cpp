@@ -1,37 +1,51 @@
 /*
 *Guillermo Cala; nov/ 29/ 2018
-*elaborar un algoritmo que rellene un array con 20 números y luego busque un número concreto.
+*elaborar un algoritmo que rellene un array con 20 nï¿½meros y luego busque un nï¿½mero.
 */
 #include <iostream>
 using namespace std;
-
-int main ()
+void FillArray(int list[], const int * limit);
+void SearchNum(int list[], const int * limit, int * Num);
+int main()
 {
 	const int Indicador = 20;
 	int Numeros[Indicador];
-	int NumBuscar, CantidadNum = 0;
-	for (int i = 0; i < Indicador; i++)
+	int NumBusc;
+	FillArray(Numeros, &Indicador);
+	cout << "Ingrese el numero que desea buscar: ";
+	cin >> NumBusc;
+	SearchNum(Numeros, &Indicador, &NumBusc);
+	system("pause");
+	return 0;
+}
+void FillArray(int list[], const int * limit)
+{
+	for(int i = 0; i < *limit; i++)
 	{
 		cout << "Ingrese el numero #" << i + 1 << " : ";
-		cin >> Numeros[i];
+		cin >> list[i];
 	}
-	cout << "Ingrese el numero que desea buscar: ";
-	cin >> NumBuscar;
-	for (int i = 0; i < Indicador; i++)
+}
+void SearchNum(int list[], const int * limit, int * Num)
+{
+	int Cant = 0;
+	for(int i = 0; i < *limit; i++)
 	{
-		if (Numeros[i] == NumBuscar)
+		if(list[i] == *Num)
 		{
-			CantidadNum++;
+			Cant++;
+		}
+		else
+		{
+			/*UNEXPECTED FUNCTION*/
 		}
 	}
-	if (CantidadNum > 0)
+	if(Cant > 0)
 	{
-		cout << "El numero " << NumBuscar << " existe, y esta " << CantidadNum << " veces" << endl;	
+		cout << "El numero " << *Num << " existe, y esta " << Cant << " veces" << endl;
 	}
 	else
 	{
-		cout << "El numero " << NumBuscar << " No existe" << endl;
+		cout << "El numero " << *Num << " No existe" << endl;
 	}
-	system ("pause");
-	return 0;
 }

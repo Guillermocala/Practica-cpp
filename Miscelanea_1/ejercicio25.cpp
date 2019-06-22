@@ -11,7 +11,8 @@
 #include "iostream"
 #include "string"
 using namespace std;
-struct Estudiante{
+struct Estudiante
+{
    string nombre;
    float nota;
 } alum[10];
@@ -33,7 +34,7 @@ int main(int argc, char const *argv[])
 	int sw = 1;
 	do
 	{
-		switch (Menu())
+		switch(Menu())
 		{
 			case 1:
 				system("clear");
@@ -93,8 +94,11 @@ int main(int argc, char const *argv[])
 			case 0:
 				sw = 0;
 				break;
+         default:
+            cout << "Debe ingresar un numero del 0 al 9..." << endl;
+            break;
 		}
-	}while(sw != 0);
+	}while(sw);
 	cin.get();
 	return 0;
 }
@@ -125,24 +129,9 @@ int Menu()
    cout << "\t#########################################################" << endl;
 	cout << "\t####   0- Salir del programa                         ####" << endl;
 	cout << "\t#########################################################" << endl;
-	int opcion, sw = 1;
-	do
-	{
-		cout << "Ingrese una opcion: ";
-		cin >> opcion;
-		if(opcion >= 0 && opcion <= 9)
-		{
-			if(opcion == 1)
-			{
-				cont++;
-			}
-			sw = 0;
-		}
-		else
-		{
-			cout << "Debe ingresar un numero del 0 al 9..." << endl;
-		}
-	}while(sw != 0);
+	int opcion;
+   cout << "Ingrese una opcion: ";
+   cin >> opcion;
 	return opcion;
 }
 void IngresaEst()

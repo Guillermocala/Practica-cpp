@@ -4,45 +4,53 @@
 */
 #include <iostream>
 using namespace std;
-
+void FillArray(int list[][3], const int * Fil, const int * Col);
+void PrintArray(int list[][3], const int * Fil, const int * Col);
+void Transpuesta(int list[][3], int list2[][3], const int * Fil, const int * Col);
 int main()
 {
-	int matriz[3][3], matriz2[3][3];
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			cout << "ingrese el valor para la posicion [" << i << "][" << j << "]: ";
-			cin >> matriz[i][j];
-		}
-	}
-	cout << endl;
-	for (int i = 0; i < 3; i++)
-	{
-		cout << "[\t";
-		for (int j = 0; j < 3; j++)
-		{
-			cout << matriz[i][j] << "\t";
-		}
-		cout << "]\n";
-	}
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			matriz2[j][i] = matriz[i][j];
-		}
-	}
-	cout << "\nla transpuesta es: " << endl;
-	for (int i = 0; i < 3; i++)
-	{
-		cout << "[\t";
-		for (int j = 0; j < 3; j++)
-		{
-			cout << matriz2[i][j] << "\t";
-		}
-		cout << "]\n";
-	}
+	const int CFil = 3;
+	const int CCol = 3;
+	int matriz[CFil][CCol], matriz2[CFil][CCol];
+	FillArray(matriz, &CFil, &CCol);
+	Transpuesta(matriz, matriz2, &CFil, &CCol);
+	cout << "\nLa matriz queda asi..." << endl;
+	PrintArray(matriz, &CFil, &CCol);
+	cout << "\nLa transpuesta es..." << endl;
+	PrintArray(matriz2, &CFil, &CCol);
 	system("pause");
 	return 0;
+}
+void FillArray(int list[][3], const int * Fil, const int * Col)
+{
+	for(int i = 0; i < *Fil; i++)
+	{
+		for(int j = 0; j < *Col; j++)
+		{
+			cout << "ingrese el valor para la posicion [" << i + 1 << "][" << j + 1 << "]: ";
+			cin >> list[i][j];
+		}
+	}
+}
+void PrintArray(int list[][3], const int * Fil, const int * Col)
+{
+	for(int i = 0; i < *Fil; i++)
+	{
+		cout << "[\t";
+		for(int j = 0; j < *Col; j++)
+		{
+			cout << list[i][j] << "\t";
+		}
+		cout << "]\n";
+	}
+}
+void Transpuesta(int list[][3], int list2[][3], const int * Fil, const int * Col)
+{
+	for(int i = 0; i < *Fil; i++)
+	{
+		for(int j = 0; j < *Col; j++)
+		{
+			list2[i][j] = list[j][i];
+		}
+	}
 }
