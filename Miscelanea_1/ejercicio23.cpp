@@ -5,27 +5,41 @@
 #include <iostream>
 #include <cstring>
 using namespace std;
-
-int main ()
+void FillChar(char text[50], int * limit);
+void Encrypt(char text[50], const int * limit);
+void PrintText(char text[50], const int * limit);
+int main()
 {
-	int cantidad;
+	int Cant;
 	char frase[50];
-	printf ("Introduzca una frase: ");
-	gets (frase);
-	cantidad = strlen(frase);
-	for (int i = 0; i < 50; i++)
+	FillChar(frase, &Cant);
+	Encrypt(frase, &Cant);
+	cout << "\nLa nueva frase es..." << endl;
+	PrintText(frase, &Cant);
+	system("pause");
+	return 0;
+}
+void FillChar(char text[50], int * limit)
+{
+	cout << "Ingrese una oracion cualquiera: ";
+	gets(text);
+	*limit = strlen(text);
+}
+void Encrypt(char text[50], const int * limit)
+{
+	for(int i = 0; i < *limit; i++)
 	{
-		if (frase[i] != '\0')//para llegar hasta el ultimo caracter
+		if(text[i] != '\0')//para llegar hasta el ultimo caracter
 		{
-			frase[i] = frase[i] + 3;//el caracter guardado se le suma 3 posiciones modificandolo
+			text[i] = text[i] + 3;//el caracter guardado se le suma 3 posiciones modificandolo
 		}
 	}
-	cout << "\nLa nueva frase es: " << endl;
-	for (int i = 0; i < sum; i++)
+}
+void PrintText(char text[50], const int * limit)
+{
+	for(int i = 0; i < *limit; i++)
 	{
-		cout << frase[i];
+		cout << text[i];
 	}
-	printf ("\n\n");
-	system ("PAUSE");     
-	return 0;
+	cout << endl;
 }

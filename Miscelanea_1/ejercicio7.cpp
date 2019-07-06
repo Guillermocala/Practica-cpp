@@ -1,37 +1,52 @@
 /*
 *Guillermo Cala; nov/ 27/ 2018
-*elaborar un algoritmo que lea 10 números por teclado, los almacene en un array y los ordene de forma ascendente.
+*elaborar un algoritmo que lea 10 nï¿½meros por teclado, los almacene en un array y los ordene de forma ascendente.
 */
 #include <iostream>
 using namespace std;
-
-int main ()
+void ReadArray(int list[], const int * limit);
+void Sort(int list[], const int * limit);
+void PrintArray(int list[], const int * limit);
+int main()
 {
 	const int Cantidad = 10;
 	int Numeros[Cantidad];
-	int aux;
-	for (int i = 0; i < Cantidad; i++)
+	ReadArray(Numeros, &Cantidad);
+	Sort(Numeros, &Cantidad);
+	cout << "El arreglo de forma ascendente queda asi: " << endl;
+	PrintArray(Numeros, &Cantidad);
+	system ("pause");
+	return 0;
+}
+void ReadArray(int list[], const int * limit)
+{
+	for (int i = 0; i < *limit; i++)
 	{
-		cout << "Ingrese el numero #" << i + 1  << " :";
-		cin >> Numeros[i];
+		cout << "Ingrese el valor #" << i + 1 << " : ";
+		cin >> list[i];
 	}
-	for (int i = 0; i < Cantidad; i++) /*este bucle recorre la cuenta de los elementos*/
+}
+void Sort(int list[], const int * limit)
+{
+	int aux;
+	for(int i = 0; i < *limit; i++) /*este bucle recorre la cuenta de los elementos*/
 	{
-		for (int j = i; j < Cantidad; j++) /*este bucle compara los elementos con los demas*/
+		for(int j = i; j < *limit; j++) /*este bucle compara los elementos con los demas*/
 		{
-			if (Numeros[i] > Numeros[j])
+			if(list[i] > list[j])
 			{
-				aux = Numeros[i];
-				Numeros[i] = Numeros[j];
-				Numeros[j] = aux;
+				aux = list[i];
+				list[i] = list[j];
+				list[j] = aux;
 			}
 		}
 	}
-	cout << "El arreglo de forma ascendente queda asi: " << endl;
-	for (int i = 0; i < Cantidad; i++)
+}
+void PrintArray(int list[], const int * limit)
+{
+	for(int j = 0; j < *limit; j++)
 	{
-		cout << "Numero #" << i + 1 << " : " << Numeros[i] << endl;
+		cout << " - " << list[j];
 	}
-	system ("pause");
-	return 0;
+	cout << endl;
 }

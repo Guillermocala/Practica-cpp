@@ -5,20 +5,29 @@
 #include <iostream>
 #include <cstring>
 using namespace std;
-
+void FillChar(char text[200], int * limit);
+void PrintText(char text[200], const int * limit);
 int main()
 {
-	int cantidad;
+	int Cant;
 	char texto[200];
-	cout << "ingrese una oracion cualquiera: ";
-	gets(texto);
-	cantidad = strlen(texto);
+	FillChar(texto, &Cant);
 	cout << "el texto invertido es: " << endl;
-	for (int i = cantidad; i >= 0; i--)
-	{
-		cout << texto[i];
-	}
-	cout << endl;
+	PrintText(texto, &Cant);
 	system("pause");
 	return 0;
+}
+void FillChar(char text[200], int * limit)
+{
+	cout << "ingrese una oracion cualquiera: ";
+	gets(text);
+	*limit = strlen(text);
+}
+void PrintText(char text[200], const int * limit)
+{
+	for(int i = *limit; i >= 0; i--)
+	{
+		cout << text[i];
+	}
+	cout << endl;
 }

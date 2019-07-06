@@ -1,44 +1,62 @@
 /*
 *Guillermo Cala; nov/ 28/ 2018
-*elaborar un algoritmo que lea 5 números por teclado, los copie a otro array multiplicados por 2 y los muestre todos ordenados usando un tercer array.
+*elaborar un algoritmo que lea 5 nï¿½meros por teclado, los copie a otro array multiplicados por 2 y los muestre todos ordenados usando un tercer array.
 */
 #include <iostream>
 using namespace std;
-
-int main ()
+void ReadArray(int list[], const int * limit);
+void Mult2(int list[], int list2[], const int * limit);
+void PrintArray(int list[], const int * limit);
+void Sort(int list[], const int * limit);
+int main()
 {
 	const int Indicador = 5;
 	int Numeros[Indicador];
-	int CopiaNumeros[Indicador];
-	int Organizador;
-	for (int i = 0; i < Indicador; i++) /* leer vector*/
+	int CopyNums[Indicador];
+	ReadArray(Numeros, &Indicador);
+	Mult2(Numeros, CopyNums, &Indicador);
+	Sort(CopyNums, &Indicador);
+	cout << "El vector copiado es: " << endl;
+	PrintArray(CopyNums, &Indicador);
+	system("pause");
+	return 0;
+}
+void ReadArray(int list[], const int * limit)
+{
+	for (int i = 0; i < *limit; i++)
 	{
-		cout << "Ingrese el numero #" << i + 1 << " : ";
-		cin >> Numeros[i];
+		cout << "Ingrese el valor #" << i + 1 << " : ";
+		cin >> list[i];
 	}
-	for (int i = 0; i < Indicador; i++) /* copia al vector secundario*/
+}
+void Mult2(int list[], int list2[], const int * limit)
+{
+	for (int i = 0; i < *limit; i++)
 	{
-		CopiaNumeros[i] = Numeros[i] * 2;
+		list2[i] = list[i] * 2;
 	}
-	for (int i = 0; i < Indicador; i++) /*ordenar el vector secundario*/
+}
+void PrintArray(int list[], const int * limit)
+{
+	for(int j = 0; j < *limit; j++)
 	{
-		for (int j = 0; j < i; j++)
+		cout << " - " << list[j];
+	}
+	cout << endl;
+}
+void Sort(int list[], const int * limit)
+{
+	int Aux;
+	for(int i = 0; i < *limit; i++) /*ordenar el vector secundario*/
+	{
+		for(int j = 0; j < i; j++)
 		{
-			if (CopiaNumeros[i] < CopiaNumeros[j]) /*si es mayor cambia las posiciones*/
+			if(list[i] < list[j]) /*si es mayor cambia las posiciones*/
 			{
-				Organizador = CopiaNumeros[i];
-				CopiaNumeros[i] = CopiaNumeros[j];
-				CopiaNumeros[j] = Organizador; 
+				Aux = list[i];
+				list[i] = list[j];
+				list[j] = Aux;
 			}
 		}
 	}
-	cout << "El vector copiado es: " << endl;
-	for (int i = 0; i < Indicador; i++) /*imprimir el vector secundario ya ordenado*/
-	{
-		cout << i + 1 << "- " << CopiaNumeros[i] << endl;
-	}
-	
-	system ("pause");
-	return 0;
 }
-

@@ -28,7 +28,7 @@ int main()
 	int sw = 1;
 	do
 	{
-		switch (menu())
+		switch(menu())
 		{
 			case 1:
 				system("clear");
@@ -61,8 +61,11 @@ int main()
 			case 0:
 				sw = 0;
 				break;
+			default:
+				cout << "Debe ingresar un numero del 0 al 5..." << endl;
+				break;
 		}
-	}while(sw != 0);
+	}while(sw);
 	cin.get();
 	return 0;
 }
@@ -85,24 +88,9 @@ int menu()
 	cout << "\t###############################################" << endl;
 	cout << "\t####   0- Salir del programa               ####" << endl;
 	cout << "\t###############################################" << endl;
-	int opcion, sw = 1;
-	do
-	{
-		cout << "Ingrese una opcion: ";
-		cin >> opcion;
-		if(opcion >= 0 && opcion <= 5)
-		{
-			if(opcion == 1)
-			{
-				cont++;
-			}
-			sw = 0;
-		}
-		else
-		{
-			cout << "Debe ingresar un numero del 0 al 5..." << endl;
-		}
-	}while(sw != 0);
+	int opcion;
+	cout << "Ingrese una opcion: ";
+	cin >> opcion;
 	return opcion;
 }
 void IngresaProd()
@@ -114,7 +102,7 @@ void IngresaProd()
       hay una salida y getline la recibe como salto de linea anulando la recepcion de datos*/
       cin.ignore();
 		cout << "Ingrese el nombre: ";
-		getline (cin, productos[i].nombre);
+		getline(cin, productos[i].nombre);
 		cout << "Ingrese el precio: ";
 		cin >> productos[i].precio;
 		cout << "Ingrese la cantidad en stock: ";
@@ -161,7 +149,7 @@ void EditProd()
 	cout << "Ingrese los nuevos datos..." << endl;
    cin.ignore();
 	cout << "Ingrese el nombre: ";
-	getline (cin, productos[indice].nombre);
+	getline(cin, productos[indice].nombre);
 	cout << "Ingrese el precio: ";
 	cin >> productos[indice].precio;
 	cout << "Ingrese la cantidad en stock: ";
