@@ -86,7 +86,7 @@ bool TheProblem(int list[][20], int row, int col, int x, int y)
       {
          cout << "cuadrante 1" << endl;
       }
-      else if(x <= (row / 2) && y <= (row / 2))
+      else if(x >= (row / 2) && y <= (row / 2))
       {
          cout << "cuadrante 2" << endl;
       }
