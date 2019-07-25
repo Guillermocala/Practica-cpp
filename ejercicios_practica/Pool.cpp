@@ -69,7 +69,7 @@ bool PositionInit(int list[][20], int row, int col)
       {
          if(i == col && j == row)
          {
-            list[i][j] = 2;
+            list[j][i] = 2;
          }
       }
    }
@@ -82,21 +82,31 @@ bool TheProblem(int list[][20], int row, int col, int x, int y)
    }
    else
    {
-      if(x <= (row / 2) && y <= (row / 2))
+      if((x == 1) || (y == 1))
       {
-         cout << "cuadrante 1" << endl;
+         cout << "linea 1" << endl;
+         if(y == 1)
+         {
+            for(int i = (x - 2); i >= 0 ; i--)
+            {
+               list[i][y - 1] = 1;
+            }
+         }
+         else
+         {
+            for(int i = (y - 2); i >= 0 ; i--)
+            {
+               list[x - 1][i] = 1;
+            }
+         }
       }
-      else if(x >= (row / 2) && y <= (row / 2))
+      else if((x == row) || (y == col))
       {
-         cout << "cuadrante 2" << endl;
+         cout << "linea 2" << endl;
       }
-      else if(x <= (row / 2) && y <= (row / 2))
+      else
       {
-         cout << "cuadrante 3" << endl;
-      }
-      else if(x <= (row / 2) && y <= (row / 2))
-      {
-         cout << "cuadrante 4" << endl;
+         cout << "no esta en linea o esquina" << endl;
       }
    }
 }
