@@ -15,6 +15,7 @@ int main(int argc, char const *argv[])
    cout << "the sum of the new values are: " << addition(num1, num2) << endl;
    cin.get();
    return 0;
+   std::cout << "/* message */" << std::endl;
 }
 int addition(const int &a, const int &b)
 {
